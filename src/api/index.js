@@ -48,10 +48,10 @@ export const friend = (id) => {
   )
 }
 
-// 获取张三聊天信息
-export const ZSchat = (ownID, otherID) => {
+// 获取聊天信息
+export const chat = (ownID, otherID) => {
   return instance.post(
-    '/ZSchat',
+    '/chat' + otherID,
     {
       Headers: {
         'Content-Type': 'application/x-www-form-urlencoded'

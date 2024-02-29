@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { ZSchat } from '@/api/index'
+import { chat } from '@/api/index'
 export default {
   props: ['otherId', 'item'],
   data () {
@@ -52,7 +52,11 @@ export default {
     }
   },
   async created () {
-    const { data } = await ZSchat(this.$store.getters.getUser.id, this.otherId)
+    const { data } = await chat(this.$store.getters.getUser.id, this.otherId)
+    this.data = data
+  },
+  async updated () {
+    const { data } = await chat(this.$store.getters.getUser.id, this.otherId)
     this.data = data
   },
   methods: {
