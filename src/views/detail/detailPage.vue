@@ -7,7 +7,7 @@
       <el-main>
         <ul class="infinite-list" style="overflow:auto">
           <li class="infinite-list-item" v-for="(obj,index) in data" :key="index">
-            <!--left -->
+            <!-- left -->
             <div class="chat_left clearfix" v-if="obj.launchID===otherId">
               <div class="chat_left_item_1 ">{{ otherId }}</div>
                 <div class="chat_left_item_2">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <!--right -->
+            <!-- right -->
             <div class="chat_right" v-else>
                 <div class="chat_right_item_1 ">{{ $store.getters.getUser.id }}</div>
                 <div class="chat_right_item_2 ">
