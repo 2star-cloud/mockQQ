@@ -75,7 +75,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['login']),
+    ...mapMutations(['setUserName,login']),
     resetForm (formName) {
       this.$nextTick(() => {
         this.$refs[formName].resetFields()
@@ -88,13 +88,14 @@ export default {
         background: 'rgba(255, 255, 255, 0.9)'
       })
       while (1) {
-        const { code, title } = await login(form)
+        const { code, title, username } = await login(form)
         if (code === 200) {
           console.log(title)
           this.$store.commit('login', {
             id: this.ruleForm.id,
             password: this.ruleForm.password
           })
+          this.$store.commit('setUserName', username)
           break
         }
       }

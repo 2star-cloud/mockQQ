@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: {
+      userName: '',
       id: '',
       password: '',
       age: '',
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    setUserName (state, userName) {
+      state.user.userName = userName
+    },
     login (state, value) {
       state.user.id = value.id
       state.user.password = value.password

@@ -2,15 +2,32 @@
   <div>
     <div>
       <div class="headerWrapper">
-        <i class="el-icon-sunrise-1"></i>
-        <p class="title">MockQQ</p>
-        <div class="demo-input-suffix">
-          <el-input
-            placeholder="查找好友"
-            prefix-icon="el-icon-search"
-            v-model="ipt">
-          </el-input>
-        </div>
+        <el-row :gutter="24">
+          <el-col :span="8"><div class="grid-content bg-purple">
+            <i class="el-icon-sunrise-1"></i>
+            <p class="title">MockQQ</p>
+          </div></el-col>
+          <el-col :span="8"><div class="grid-content bg-purple">
+            <el-statistic
+              ref="statistic"
+              @finish="hilarity"
+              format="HH:mm:ss"
+              :value="deadline"
+              title="距离明日："
+              time-indices
+            >
+            </el-statistic>
+          </div></el-col>
+          <el-col :span="8"><div class="grid-content bg-purple">
+            <div class="demo-input-suffix">
+            <el-input
+              placeholder="查找好友"
+              prefix-icon="el-icon-search"
+              v-model="ipt">
+            </el-input>
+          </div>
+          </div></el-col>
+        </el-row>
       </div>
       <div class="body">
         <el-container style="height: 500px; border: 1px solid #eee">
@@ -57,11 +74,25 @@ export default {
     setItem (item, iptId) {
       this.item = item
       this.iptId = iptId
+    },
+    hilarity () {
+      this.$notify({
+        title: '提示',
+        message: '时间已到',
+        duration: 0
+      })
     }
   },
   async created () {
     if (this.$store.getters.getUser.id !== '') {
-      while (1) {
+      const h = this.$createElement
+
+      this.$notify({
+        title: 'code',
+        message: h('i', { style: 'color: teal' }, '登录成功'),
+        showClose: false
+      })
+      while (this.$store.getters.getUser.friend) {
         const { data } = await friend(this.$store.getters.getUser.id)
         if (data !== '') {
           this.ary = data
