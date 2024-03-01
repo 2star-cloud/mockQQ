@@ -6,7 +6,7 @@
         <p class="title">MockQQ</p>
         <div class="demo-input-suffix">
           <el-input
-            placeholder="请输入内容"
+            placeholder="查找好友"
             prefix-icon="el-icon-search"
             v-model="ipt">
           </el-input>
@@ -42,6 +42,7 @@ export default {
   },
   data () {
     return {
+      deadline: Date.now() + (new Date().setHours(23, 59, 59) - Date.now()),
       count: 10,
       ipt: '',
       ary: [],
@@ -60,9 +61,14 @@ export default {
   },
   async created () {
     if (this.$store.getters.getUser.id !== '') {
-      const { data } = await friend(this.$store.getters.getUser.id)
-      this.ary = data
-      this.$store.commit('friend', data)
+      while (1) {
+        const { data } = await friend(this.$store.getters.getUser.id)
+        if (data !== '') {
+          this.ary = data
+          this.$store.commit('friend', data)
+          break
+        }
+      }
     } else {
       this.$router.push('/')
     }
@@ -100,5 +106,11 @@ export default {
 .name{
   font-size: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.el-main{
+  background-image: url('../../Image/tag.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
 }
 </style>

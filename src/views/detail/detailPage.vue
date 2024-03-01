@@ -55,10 +55,6 @@ export default {
     const { data } = await chat(this.$store.getters.getUser.id, this.otherId)
     this.data = data
   },
-  async updated () {
-    const { data } = await chat(this.$store.getters.getUser.id, this.otherId)
-    this.data = data
-  },
   methods: {
     setTime (timer) {
       const date = new Date(timer)
@@ -78,6 +74,14 @@ export default {
         receptionID: this.otherId
       })
       this.text = ''
+    }
+  },
+  watch: {
+    otherId: {
+      async handler (newVal, oldVal) {
+        const { data } = await chat(this.$store.getters.getUser.id, newVal)
+        this.data = data
+      }
     }
   }
 }

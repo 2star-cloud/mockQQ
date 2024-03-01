@@ -58,7 +58,8 @@ export default {
       ruleForm: {
         id: '',
         password: '',
-        captcha: ''
+        captcha: '',
+        loading: false
       },
       rules: {
         id: [
@@ -81,15 +82,24 @@ export default {
       })
     },
     async login (form) {
-      const { code, title } = await login(form)
-      if (code === 200) {
-        console.log(title)
-        this.$store.commit('login', {
-          id: this.ruleForm.id,
-          password: this.ruleForm.password
-        })
-        this.$router.push('/HomePage')
+      const loading = this.$loading({
+        lock: true,
+        text: '加载中',
+        background: 'rgba(255, 255, 255, 0.9)'
+      })
+      while (1) {
+        const { code, title } = await login(form)
+        if (code === 200) {
+          console.log(title)
+          this.$store.commit('login', {
+            id: this.ruleForm.id,
+            password: this.ruleForm.password
+          })
+          break
+        }
       }
+      loading.close()
+      this.$router.push('/HomePage')
     }
   }
 }

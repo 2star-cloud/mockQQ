@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomePage from '@/views/home/homePage'
-import FriendPage from '@/views/friend/friendPage'
-import LoginPage from '@/views/login/loginPage'
-import EnrollPage from '@/views/login/enrollPage'
-import MinePage from '@/views/mine/minePage'
-import GroupPage from '@/views/group/groupPage'
-import IndexPage from '@/views/home/indexPage'
-import DetailPage from '@/views/detail/detailPage'
+
+const HomePage = () => import('@/views/home/homePage')
+const FriendPage = () => import('@/views/friend/friendPage')
+const LoginPage = () => import('@/views/login/loginPage')
+const EnrollPage = () => import('@/views/login/enrollPage')
+const MinePage = () => import('@/views/mine/minePage')
+const GroupPage = () => import('@/views/group/groupPage')
+const IndexPage = () => import('@/views/home/indexPage')
+const DetailPage = () => import('@/views/detail/detailPage')
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,6 +18,10 @@ const routes = [
   {
     path: '/IndexPage',
     component: IndexPage,
+    scrollBehavior (to, from, savedPosition) {
+      // 始终滚动到顶部
+      return { top: 0 }
+    },
     redirect: '/HomePage',
     children: [
       {
