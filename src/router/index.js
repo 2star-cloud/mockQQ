@@ -18,11 +18,41 @@ const routes = [
     component: IndexPage,
     redirect: '/HomePage',
     children: [
-      { path: '/HomePage', component: HomePage },
-      { path: '/FriendPage', component: FriendPage },
-      { path: '/MinePage', component: MinePage },
-      { path: '/GroupPage', component: GroupPage },
-      { path: '/DetailPage', component: DetailPage }
+      {
+        path: '/HomePage',
+        component: HomePage,
+        meta: {
+          keepAlive: true
+        }
+      },
+      {
+        path: '/FriendPage',
+        component: FriendPage,
+        meta: {
+          keepAlive: true
+        }
+      },
+      {
+        path: '/MinePage',
+        component: MinePage,
+        meta: {
+          keepAlive: true
+        }
+      },
+      {
+        path: '/GroupPage',
+        component: GroupPage,
+        meta: {
+          keepAlive: true
+        }
+      },
+      {
+        path: '/DetailPage',
+        component: DetailPage,
+        meta: {
+          keepAlive: false
+        }
+      }
     ]
   }
 ]

@@ -7,23 +7,23 @@
       <el-main>
         <ul class="infinite-list" style="overflow:auto">
           <li class="infinite-list-item" v-for="(obj,index) in data" :key="index">
-            <!-- left -->
-            <div class="chat_left clearfix" v-if="obj.launchID===otherId">
-              <div class="chat_left_item_1 ">{{ otherId }}</div>
-                <div class="chat_left_item_2">
-                    <div class="chat_time">{{ setTime(obj.time) }}</div>
-                    <div class="chat_left_content">
-                        {{ obj.content }}
-                    </div>
-                </div>
-            </div>
             <!-- right -->
-            <div class="chat_right" v-else>
+            <div class="chat_right" v-if="$store.getters.getUser.id==obj.launchID">
                 <div class="chat_right_item_1 ">{{ $store.getters.getUser.id }}</div>
                 <div class="chat_right_item_2 ">
                     <div class="chat_right_time">{{ setTime(obj.time) }}</div>
                     <div class="chat_right_content">
                       {{ obj.content }}
+                    </div>
+                </div>
+            </div>
+            <!-- left -->
+            <div class="chat_left clearfix" v-else>
+              <div class="chat_left_item_1 ">{{ obj.launchID }}</div>
+                <div class="chat_left_item_2">
+                    <div class="chat_time">{{ setTime(obj.time) }}</div>
+                    <div class="chat_left_content">
+                        {{ obj.content }}
                     </div>
                 </div>
             </div>
