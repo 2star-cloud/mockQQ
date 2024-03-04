@@ -129,6 +129,7 @@ export default {
   .demo-input-suffix{
     float: right;
     margin-top: 10px;
+    border-radius: 4px;
   }
 }
 .el-header {
