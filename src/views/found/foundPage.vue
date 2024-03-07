@@ -1,5 +1,5 @@
 <template>
-  <div>群聊</div>
+  <div>发现</div>
 </template>
 
 <script>

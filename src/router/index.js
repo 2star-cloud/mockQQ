@@ -6,9 +6,11 @@ const FriendPage = () => import('@/views/friend/friendPage')
 const LoginPage = () => import('@/views/login/loginPage')
 const EnrollPage = () => import('@/views/login/enrollPage')
 const MinePage = () => import('@/views/mine/minePage')
-const GroupPage = () => import('@/views/group/groupPage')
+const FoundPage = () => import('@/views/found/foundPage')
 const IndexPage = () => import('@/views/home/indexPage')
 const DetailPage = () => import('@/views/detail/detailPage')
+const CollectionPage = () => import('@/views/mine/collection/collectionPage.vue')
+const SettingPage = () => import('@/views/setting/settingPage.vue')
 
 Vue.use(VueRouter)
 
@@ -41,13 +43,19 @@ const routes = [
       {
         path: '/MinePage',
         component: MinePage,
-        meta: {
-          keepAlive: true
-        }
+        children: [
+          {
+            path: 'CollectionPage',
+            component: CollectionPage,
+            meta: {
+              keepAlive: true
+            }
+          }
+        ]
       },
       {
-        path: '/GroupPage',
-        component: GroupPage,
+        path: '/FoundPage',
+        component: FoundPage,
         meta: {
           keepAlive: true
         }
@@ -57,6 +65,13 @@ const routes = [
         component: DetailPage,
         meta: {
           keepAlive: false
+        }
+      },
+      {
+        path: '/SettingPage',
+        component: SettingPage,
+        meta: {
+          keepAlive: true
         }
       }
     ]

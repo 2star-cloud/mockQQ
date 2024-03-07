@@ -54,6 +54,12 @@ export default {
   async created () {
     const { data } = await chat(this.$store.getters.getUser.id, this.otherId)
     this.data = data
+    const h = this.$createElement
+    this.$notify({
+      title: 'code',
+      message: h('i', { style: 'color: teal' }, '请求成功'),
+      showClose: false
+    })
   },
   methods: {
     setTime (timer) {
@@ -81,6 +87,12 @@ export default {
       async handler (newVal, oldVal) {
         const { data } = await chat(this.$store.getters.getUser.id, newVal)
         this.data = data
+        const h = this.$createElement
+        this.$notify({
+          title: 'code',
+          message: h('i', { style: 'color: teal' }, '请求成功'),
+          showClose: false
+        })
       }
     }
   }
@@ -96,6 +108,7 @@ export default {
 ul{
   list-style:none;
 }
+// 聊天界面的样式
 /* middle */
 .chat_middle{
     width: 450px;
@@ -117,7 +130,7 @@ ul{
     background-color: #4459AB;
     float: left;
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: -20px;
     margin-right: 10px;
     text-align: center;
     line-height: 50px;
@@ -154,7 +167,6 @@ ul{
     float: right;
     margin-top: 10px;
     margin-left: 10px;
-    margin-right: 10px;
     text-align: center;
     line-height: 50px;
     color: white;

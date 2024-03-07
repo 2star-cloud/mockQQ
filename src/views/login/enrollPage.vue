@@ -149,6 +149,7 @@ export default {
     width: 70%;
   }
 }
+
 p {
   font-size: xx-large;
   background: -webkit-linear-gradient(135deg,
@@ -171,19 +172,20 @@ p {
 }
 
 @keyframes flowCss {
-0% {
-  /* 移动背景位置 */
-  background-position: 0 0;
-}
+  0% {
+    /* 移动背景位置 */
+    background-position: 0 0;
+  }
 
-100% {
-  background-position: -400% 0;
-}
+  100% {
+    background-position: -400% 0;
+  }
 }
 
 p:hover {
   animation: flowCss 4s infinite linear;
 }
+
 .dance {
     align-items: center;
     justify-content: center;

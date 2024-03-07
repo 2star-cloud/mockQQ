@@ -174,7 +174,6 @@ p {
     background-position: -400% 0;
   }
 }
-
 p:hover {
   animation: flowCss 4s infinite linear;
 }
