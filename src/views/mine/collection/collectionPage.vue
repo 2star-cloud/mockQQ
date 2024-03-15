@@ -19,15 +19,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.body{
+// 页面背景的样式
+.body,.el-header{
   background-color: #fff;
-}
-.el-header{
   border-width: 0 0 1px 0; border-style: solid; border-color: #ccc;
 }
 
+// 返回上一页的样式
 .el-page-header{
   margin-top: 20px;
+}
+
+.el-main{
+  margin-bottom:160px;
 }
 
 </style>

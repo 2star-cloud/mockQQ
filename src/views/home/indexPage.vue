@@ -53,10 +53,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+// 页面大小的样式
 .el-main{
   height: 100%;
   width: 100%;
 }
+// 表格的样式
 .el-menu-item{
   height: 70px;
   width: 25%;

@@ -106,15 +106,14 @@ export default {
         text: '加载中',
         background: 'rgba(255, 255, 255, 0.9)'
       })
-      const { code, title, username } = await login(form)
+      const { code, title, userName } = await login(form)
       if (code === 200) {
         console.log(title)
         this.$store.commit('login', {
+          userName: userName,
           id: this.ruleForm.id,
-          password: this.ruleForm.password,
-          username: this.id
+          password: this.ruleForm.password
         })
-        this.$store.commit('setUserName', username)
         loading.close()
         this.$router.push('/HomePage')
       }

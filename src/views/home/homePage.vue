@@ -52,10 +52,9 @@
 
 <script>
 import { friend } from '@/api/index'
-import detailPage from '../detail/detailPage.vue'
 export default {
   components: {
-    detailPage
+    detailPage: () => import('@/views/detail/detailPage.vue')
   },
   data () {
     return {

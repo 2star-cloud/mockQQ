@@ -63,3 +63,18 @@ export const chat = (ownID, otherID) => {
     }
   )
 }
+
+// 项目介绍的请求
+export const introduce = (id) => {
+  return instance.post(
+    '/introduce',
+    {
+      Headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: {
+        id: id
+      }
+    }
+  )
+}

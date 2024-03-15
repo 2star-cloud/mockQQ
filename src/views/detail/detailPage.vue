@@ -9,7 +9,7 @@
           <li class="infinite-list-item" v-for="(obj,index) in data" :key="index">
             <!-- right -->
             <div class="chat_right" v-if="$store.getters.getUser.id==obj.launchID">
-                <div class="chat_right_item_1 ">{{ $store.getters.getUser.id }}</div>
+                <div class="chat_right_item_1 ">{{ $store.getters.getUser.userName }}</div>
                 <div class="chat_right_item_2 ">
                     <div class="chat_right_time">{{ setTime(obj.time) }}</div>
                     <div class="chat_right_content">
@@ -87,11 +87,9 @@ export default {
       async handler (newVal, oldVal) {
         const { data } = await chat(this.$store.getters.getUser.id, newVal)
         this.data = data
-        const h = this.$createElement
-        this.$notify({
-          title: 'code',
-          message: h('i', { style: 'color: teal' }, '请求成功'),
-          showClose: false
+        this.$message({
+          message: '成功获取聊天信息',
+          type: 'success'
         })
       }
     }
@@ -231,9 +229,9 @@ ul{
     font-weight: 500k;
 }
 .line{
-    width: 100%;
-    border-top: 1px;
-    border-color: #f4f5f7;
-    border-style: solid;
+  width: 100%;
+  border-top: 1px;
+  border-color: #f4f5f7;
+  border-style: solid;
 }
 </style>
