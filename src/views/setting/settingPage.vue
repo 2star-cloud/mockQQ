@@ -227,7 +227,7 @@ export default {
     }
     .id{
       color: #7b7979;
-    font-size: 10px;
+      font-size: 10px;
     }
   }
   .AutomaticLogin{
@@ -320,7 +320,7 @@ export default {
     .main{
       float: left;
       width: 200px;
-      margin-top: 20px;
+      margin-top: 15px;
       .el-checkbox{
         float: left;
         margin-bottom: 5px;

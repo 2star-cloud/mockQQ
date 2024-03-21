@@ -26,9 +26,15 @@ export default new Vuex.Store({
     // 是否开启自动登录(默认为否)
     AutomaticLogin: false,
     // 是否完成对网站信息的获取
-    introduceTar: true
+    introduceTar: true,
+    // 是否已经完成登录
+    loginBefore: true
   },
   getters: {
+    // 获取是否登录
+    getLoginBefore (state) {
+      return state.loginBefore
+    },
     // 获取用户信息
     getUser (state) {
       return state.user
@@ -70,6 +76,10 @@ export default new Vuex.Store({
       } else {
         state.AutomaticLogin = true
       }
+    },
+    // 登录完成后
+    SetLoginBefore (state) {
+      state.loginBefore = false
     }
   },
   actions: {

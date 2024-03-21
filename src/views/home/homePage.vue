@@ -1,3 +1,4 @@
+<!-- 首页页面 -->
 <template>
   <div>
     <div>
@@ -89,7 +90,7 @@ export default {
       this.$notify({
         title: 'code',
         message: h('i', { style: 'color: teal' }, '登录成功'),
-        showClose: false
+        showClose: true
       })
       while (this.$store.getters.getUser.friend) {
         const { data } = await friend(this.$store.getters.getUser.id)

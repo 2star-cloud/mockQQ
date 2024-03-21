@@ -115,6 +115,7 @@ export default {
           password: this.ruleForm.password
         })
         loading.close()
+        this.$store.commit('SetLoginBefore')
         this.$router.push('/HomePage')
       }
     }

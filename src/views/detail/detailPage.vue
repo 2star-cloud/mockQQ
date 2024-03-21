@@ -54,11 +54,9 @@ export default {
   async created () {
     const { data } = await chat(this.$store.getters.getUser.id, this.otherId)
     this.data = data
-    const h = this.$createElement
-    this.$notify({
-      title: 'code',
-      message: h('i', { style: 'color: teal' }, '请求成功'),
-      showClose: false
+    this.$message({
+      message: '成功获取聊天信息',
+      type: 'success'
     })
   },
   methods: {

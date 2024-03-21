@@ -1,5 +1,5 @@
 <template>
-  <div class="bg">
+  <div :class="{'bg':$store.getters.getLoginBefore}">
     <router-view></router-view>
   </div>
 </template>

@@ -1,5 +1,6 @@
+<!-- 发现页面 -->
 <template>
-  <div>发现</div>
+  <div class="body">发现</div>
 </template>
 
 <script>
@@ -8,6 +9,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="less" scoped>
+.body{
+  background-color: white;
+}
 </style>
