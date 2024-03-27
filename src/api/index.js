@@ -78,3 +78,63 @@ export const introduce = (id) => {
     }
   )
 }
+
+// 发现的推荐的请求
+export const FoundRecommend = (id) => {
+  return instance.post(
+    '/FoundRecommend',
+    {
+      Headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: {
+        id: id
+      }
+    }
+  )
+}
+
+// 发现的热点的请求
+export const FoundHotspot = (id) => {
+  return instance.post(
+    '/FoundHotspot',
+    {
+      Headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: {
+        id: id
+      }
+    }
+  )
+}
+
+// 发现的娱乐的请求
+export const FoundAmusement = (id) => {
+  return instance.post(
+    '/FoundAmusement',
+    {
+      Headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: {
+        id: id
+      }
+    }
+  )
+}
+
+// 发现的军事的请求
+export const FoundMilitary = (id) => {
+  return instance.post(
+    '/FoundMilitary',
+    {
+      Headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: {
+        id: id
+      }
+    }
+  )
+}

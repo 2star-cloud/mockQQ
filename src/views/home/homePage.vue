@@ -32,7 +32,7 @@
       </div>
       <div class="body">
         <el-container style="height: 500px; border: 1px solid #eee">
-          <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+          <el-aside width="200px" style="background-color: rgba(238, 241, 246, 0.5)">
             <el-menu :default-openeds="['1', '1000']">
               <el-submenu v-for="(obj, index) in ary" :key="index+1" :index="String(index+1)" @click.native="setItem(Object.keys(obj)[0],Object.values(obj)[0].id)">
                 <template slot="title" v-if="Object.values(obj)[0].type === 1"><i class="el-icon-user"></i>{{ Object.keys(obj)[0] }}</template>
@@ -68,9 +68,6 @@ export default {
     }
   },
   methods: {
-    load () {
-      this.count += 2
-    },
     setItem (item, iptId) {
       this.item = item
       this.iptId = iptId
@@ -114,6 +111,9 @@ export default {
     height: 100%;
   }
 }
+ul{
+  background-color: rgba(255,255,255,0.5);
+}
 .headerWrapper{
   width: 100%;
   height: 80px;
@@ -139,10 +139,5 @@ export default {
   font-size: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-.el-main{
-  background-image: url('../../Image/tag.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  position: relative;
-}
+
 </style>

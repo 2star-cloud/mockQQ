@@ -103,7 +103,7 @@ export default {
 
 <style lang="less" scoped>
 .body{
-  background-color: white;
+  background-color: rgba(255,255,255,0.5);
 }
 
 // 设置与头像的样式
@@ -181,7 +181,7 @@ p{
 
 // 底部的样式
 .el-footer {
-    background-color: #f7fbfd;
+    background-color: rgba(255,255,255,0.5);
     padding: 80px 120px;
     width: 100%;
     p{

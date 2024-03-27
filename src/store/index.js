@@ -28,12 +28,16 @@ export default new Vuex.Store({
     // 是否完成对网站信息的获取
     introduceTar: true,
     // 是否已经完成登录
-    loginBefore: true
+    loginBefore: true,
+    bgImg: false
   },
   getters: {
     // 获取是否登录
     getLoginBefore (state) {
       return state.loginBefore
+    },
+    getbgImg (state) {
+      return state.bgImg
     },
     // 获取用户信息
     getUser (state) {
@@ -80,6 +84,7 @@ export default new Vuex.Store({
     // 登录完成后
     SetLoginBefore (state) {
       state.loginBefore = false
+      state.bgImg = true
     }
   },
   actions: {

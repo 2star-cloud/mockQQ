@@ -60,7 +60,7 @@ export default {
 
 <style lang="less" scoped>
 .body{
-  background-color: white;
+  background-color: rgba(255,255,255,0.5);
 }
 
 //搜索好友与添加的样式
