@@ -4,10 +4,12 @@
     <div>
       <div class="headerWrapper">
         <el-row :gutter="24">
-          <el-col :span="8"><div class="grid-content bg-purple">
-            <i class="el-icon-sunrise-1"></i>
-            <p class="title">MockQQ</p>
-          </div></el-col>
+          <el-col :span="8">
+            <div class="grid-content bg-purple">
+              <i class="el-icon-sunrise-1"></i>
+              <p class="title">MockQQ</p>
+            </div>
+          </el-col>
           <el-col :span="8"><div class="grid-content bg-purple">
             <el-statistic
               ref="statistic"
