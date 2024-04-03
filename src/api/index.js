@@ -1,22 +1,5 @@
 import instance from '@/utils/request'
 
-// 登录的请求
-export const login = (form) => {
-  return instance.post(
-    '/login',
-    {
-      Headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: {
-        id: form.id,
-        password: form.password,
-        captcha: form.captcha
-      }
-    }
-  )
-}
-
 // 注册的请求
 export const enroll = (form) => {
   return instance.post(

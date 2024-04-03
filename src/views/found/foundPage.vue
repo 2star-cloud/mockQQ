@@ -3,29 +3,29 @@
   <div class="body">
     <el-container>
       <el-main>
-        <el-tabs type="border-card">
-          <el-tab-pane label="推荐">
-            <vue-lazy-component :timeout="2000" tagName="div">
+        <el-tabs type="border-card" v-model="tabName">
+          <el-tab-pane label="推荐" name="first">
+            <vue-lazy-component :timeout="2000" tagName="div" v-for="(item,index) in RecommendData" :key="index">
               <FoundRecommendSkeleton slot="skeleton"></FoundRecommendSkeleton>
-              <FoundRecommendDetail></FoundRecommendDetail>
+              <FoundRecommendDetail :data="item"></FoundRecommendDetail>
             </vue-lazy-component>
           </el-tab-pane>
-          <el-tab-pane label="热点">
-            <vue-lazy-component :timeout="2000" tagName="div">
+          <el-tab-pane label="热点" name="second" @click="SetHotspotData()">
+            <vue-lazy-component :timeout="2000" tagName="div" v-for="(item,index) in HotspotData" :key="index">
               <FoundHotspotSkeleton slot="skeleton"></FoundHotspotSkeleton>
-              <FoundHotspotDetail></FoundHotspotDetail>
+              <FoundHotspotDetail :data="item"></FoundHotspotDetail>
             </vue-lazy-component>
           </el-tab-pane>
-          <el-tab-pane label="娱乐">
-            <vue-lazy-component :timeout="2000" tagName="div">
+          <el-tab-pane label="娱乐" name="third" @click="SetAmusementData()">
+            <vue-lazy-component :timeout="2000" tagName="div" v-for="(item,index) in AmusementData" :key="index">
               <FoundAmusementSkeleton slot="skeleton"></FoundAmusementSkeleton>
-              <FoundAmusementDetail></FoundAmusementDetail>
+              <FoundAmusementDetail :data="item"></FoundAmusementDetail>
             </vue-lazy-component>
           </el-tab-pane>
-          <el-tab-pane label="军事">
-            <vue-lazy-component :timeout="2000" tagName="div">
+          <el-tab-pane label="军事" name="fourth" @click="SetMilitaryData()">
+            <vue-lazy-component :timeout="2000" tagName="div" v-for="(item,index) in MilitaryData" :key="index">
               <FoundMilitarySkeleton slot="skeleton"></FoundMilitarySkeleton>
-              <FoundMilitaryDetail></FoundMilitaryDetail>
+              <FoundMilitaryDetail :data="item"></FoundMilitaryDetail>
             </vue-lazy-component>
           </el-tab-pane>
         </el-tabs>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { FoundRecommend, FoundHotspot, FoundAmusement, FoundMilitary } from '@/api/index'
 export default {
   // 动态导入组件
   components: {
@@ -51,6 +52,42 @@ export default {
     // 军事
     FoundMilitaryDetail: () => import('@/components/FoundMilitary/foundDetail.vue'),
     FoundMilitarySkeleton: () => import('@/components/FoundMilitary/foundDetailSkeleton.vue')
+  },
+  data () {
+    return {
+      id: this.$store.getters.getUser.id,
+      tabName: 'first',
+      RecommendData: [],
+      HotspotData: [],
+      AmusementData: [],
+      MilitaryData: []
+    }
+  },
+  async created () {
+    if (this.RecommendData) {
+      const { data } = await FoundRecommend(this.id)
+      this.RecommendData = data
+    }
+  },
+  methods: {
+    async SetHotspotData () {
+      if (this.HotspotData) {
+        const { data } = await FoundHotspot(this.id)
+        this.HotspotData = data
+      }
+    },
+    async SetAmusementData () {
+      if (this.AmusementData) {
+        const { data } = await FoundAmusement(this.id)
+        this.AmusementData = data
+      }
+    },
+    async SetMilitaryData () {
+      if (this.MilitaryData) {
+        const { data } = await FoundMilitary(this.id)
+        this.MilitaryData = data
+      }
+    }
   }
 }
 </script>

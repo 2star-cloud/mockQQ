@@ -47,7 +47,6 @@
 </template>
 
 <script>
-import { login } from '@/api/index'
 import { mapMutations } from 'vuex'
 export default {
   data () {
@@ -90,7 +89,8 @@ export default {
         captcha: [
           { validator: checkCaptcha, trigger: 'blur' }
         ]
-      }
+      },
+      data: ''
     }
   },
   methods: {
@@ -100,24 +100,37 @@ export default {
         this.$refs[formName].resetFields()
       })
     },
-    async login (form) {
+    login (form) {
       const loading = this.$loading({
         lock: true,
         text: '加载中',
         background: 'rgba(255, 255, 255, 0.9)'
       })
-      const { code, title, userName } = await login(form)
-      if (code === 200) {
-        console.log(title)
-        this.$store.commit('login', {
-          userName: userName,
-          id: this.ruleForm.id,
-          password: this.ruleForm.password
-        })
-        loading.close()
-        this.$store.commit('SetLoginBefore')
-        this.$router.push('/HomePage')
+      const xhr = new XMLHttpRequest()
+      xhr.open('post', 'https://yapi.pro/mock/249815/login')
+      xhr.addEventListener('loadend', () => {
+        if (xhr.status === 200) {
+          this.$store.commit('login', {
+            userName: xhr.response.userName,
+            id: this.ruleForm.id,
+            password: this.ruleForm.password
+          })
+          loading.close()
+          this.$store.commit('SetLoginBefore')
+          this.$router.push('/HomePage')
+        }
+      })
+
+      // 设置请求头-告诉服务器内容类型（JSON字符串）
+      xhr.setRequestHeader('Content', 'application/json')
+      // 准备提交的数据
+      const userObj = {
+        id: form.id,
+        password: form.password,
+        captcha: form.captcha
       }
+      const useStr = JSON.stringify(userObj)
+      xhr.send(useStr)
     }
   }
 }

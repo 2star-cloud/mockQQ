@@ -1,13 +1,14 @@
 <template>
-  <div>111</div>
+  <div class="body">111</div>
 </template>
 
 <script>
-export default {
 
+export default {
+  props: ['data']
 }
 </script>
 
-<style>
+<style lang="less" scoped>
 
 </style>
